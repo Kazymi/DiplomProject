@@ -16,7 +16,7 @@ public class CharaPlayerControlerA : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            if (!PlayerLibrary.ActivDialog && !PlayerLibrary.ActivEsc)
+            if (!PlayerLibrary.ActivDialog && !PlayerLibrary.ActivEsc && !PlayerLibrary.CraftSystem)
             {
                 isActiv(true);
             }

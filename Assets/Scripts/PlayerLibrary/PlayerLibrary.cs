@@ -10,6 +10,7 @@ public static class PlayerLibrary
     public static bool ActivDialog = false;
     public static bool ActivEsc = false;
     public static bool SettingMenu =false;
+    public static bool CraftSystem = false;
 
     public static GameObject Head;
     public static GameObject Body;

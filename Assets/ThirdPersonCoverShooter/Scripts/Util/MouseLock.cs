@@ -49,7 +49,7 @@ namespace CoverShooter
             }
 
 
-            if (_isLocked && !PlayerLibrary.ActivEsc)
+            if (_isLocked && !PlayerLibrary.ActivEsc && !PlayerLibrary.CraftSystem)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;

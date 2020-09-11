@@ -258,7 +258,13 @@ public class PlayerInventory : MonoBehaviour
                 StartCoroutine(Eqviphead());
                 PlayerLibrary.CurrectScaleHead(false, Val);
             }
+            if(item.itemAttributes[i].attributeName == "None")
+            {
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().addItemToInventory(item.itemID);
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().updateItemList();
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().stackableSettings();
 
+            }
 
 
         }
@@ -339,7 +345,13 @@ public class PlayerInventory : MonoBehaviour
                 StartCoroutine(Eqviphead());
                 PlayerLibrary.CurrectScaleHead(false, Val);
             }
+            if (item.itemAttributes[i].attributeName == "None")
+            {
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().addItemToInventory(item.itemID);
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().updateItemList();
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().stackableSettings();
 
+            }
         }
         //if (HPMANACanvas != null)
         //{
@@ -396,19 +408,6 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
-        {
-            if (!characterSystem.activeSelf)
-            {
-                characterSystemInventory.openInventory();
-            }
-            else
-            {
-                if (toolTip != null)
-                    toolTip.deactivateTooltip();
-                characterSystemInventory.closeInventory();
-            }
-        }
 
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
         {

@@ -4,14 +4,23 @@ using System.Collections;
 
 public class PickUpItem : MonoBehaviour
 {
+
+    private enum Setting
+    {
+        rigbody = 0,
+        none = 1
+    }
     public Item item;
     private Inventory _inventory;
     private GameObject _player;
- 
+    [Header("Включать рб или нет")]
+    [SerializeField] private Setting Settings = Setting.rigbody;
+
     void Start()
     {
-        transform.position = new Vector3(PlayerLibrary.PlayerGameObject.transform.position.x, PlayerLibrary.PlayerGameObject.transform.position.y+2f, PlayerLibrary.PlayerGameObject.transform.position.z);
-       gameObject.AddComponent<Rigidbody>();
+       
+        if (Settings == Setting.rigbody) { gameObject.AddComponent<Rigidbody>(); StartCoroutine(DestroRigitBody()); transform.position = new Vector3(PlayerLibrary.PlayerGameObject.transform.position.x, PlayerLibrary.PlayerGameObject.transform.position.y + 2f, PlayerLibrary.PlayerGameObject.transform.position.z); }
+        
        gameObject.AddComponent<BoxCollider>().size = new Vector3(1, 1, 1);
     }
     public void E(GameObject hit)

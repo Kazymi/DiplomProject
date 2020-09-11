@@ -153,6 +153,8 @@ public class CraftSystem : MonoBehaviour
             Transform trans = transform.GetChild(1).GetChild(i);
             if (trans.childCount != 0)
             {
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().craftSystem.GetComponent<Inventory>().ItemsInInventory.Clear();
+                PlayerLibrary.PlayerGameObject.GetComponent<PlayerInventory>().craftSystem.GetComponent<Inventory>().updateItemList();
                 itemInCraftSystem.Add(trans.GetChild(0).GetComponent<ItemOnObject>().item);
                 itemInCraftSystemGameObject.Add(trans.GetChild(0).gameObject);
             }
