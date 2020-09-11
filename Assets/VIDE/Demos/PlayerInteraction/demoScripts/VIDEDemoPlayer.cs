@@ -1,0 +1,72 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using VIDE_Data;
+
+public class VIDEDemoPlayer : MonoBehaviour
+{
+    //This script handles player movement and interaction with other NPC game objects
+
+    public string playerName = "VIDE User";
+
+    //Reference to our diagUI script for quick access
+    public VIDEUIManager1 diagUI;
+    public QuestChartDemo questUI;
+    public Animator blue;
+
+    //Stored current VA when inside a trigger
+    public VIDE_Assign inTrigger;
+
+    //DEMO variables for item inventory
+    //Crazy cap NPC in the demo has items you can collect
+    public List<string> demo_Items = new List<string>();
+    public List<string> demo_ItemInventory = new List<string>();
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<VIDE_Assign>() != null)
+            inTrigger = other.GetComponent<VIDE_Assign>();
+    }
+
+    void OnTriggerExit()
+    {
+        inTrigger = null;
+    }
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TryInteract();
+        }
+    }
+
+    //Casts a ray to see if we hit an NPC and, if so, we interact
+    void TryInteract()
+    {
+     
+        RaycastHit rHit;
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rHit, 5))
+        {
+            //Lets grab the NPC's VIDE_Assign script, if there's any
+            VIDE_Assign assigned;
+            if (rHit.collider.GetComponent<VIDE_Assign>() != null)
+                assigned = rHit.collider.GetComponent<VIDE_Assign>();
+            else return;
+
+            if (assigned.alias == "QuestUI")
+            {
+                questUI.Interact(); //Begins interaction with Quest Chart
+            } else
+            {
+                diagUI.Interact(assigned); //Begins interaction
+            }
+        }
+    }
+}
