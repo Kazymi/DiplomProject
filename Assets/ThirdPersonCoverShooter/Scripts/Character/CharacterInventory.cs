@@ -9,7 +9,7 @@ namespace CoverShooter
         /// All the weapons belonging in the inventory.
         /// </summary>
         [Tooltip("All the weapons belonging in the inventory.")]
-        public WeaponDescription[] Weapons;
+        public WeaponDescription[] Weapons = new WeaponDescription[2];
 
         private void Awake()
         {
