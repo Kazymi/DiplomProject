@@ -60,7 +60,7 @@ namespace CoverShooter
         {
             if (BulletInventory > 0 && LoadedBullets < MagazineSize)
             {
-                LoadedBullets++;
+                LoadedBullets+=8;
 
                 for (int i = 0; i < Listeners.Length; i++)
                     Listeners[i].OnBulletLoad();
