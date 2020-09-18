@@ -7,6 +7,7 @@ namespace CoverShooter
     /// </summary>
     public class Gun : BaseGun
     {
+        public bool CustomReload = false;
         /// <summary>
         /// Can the gun be loaded with more bullets.
         /// </summary>
@@ -58,9 +59,10 @@ namespace CoverShooter
         /// </summary
         public override bool LoadBullet()
         {
+            if (CustomReload) return false;
             if (BulletInventory > 0 && LoadedBullets < MagazineSize)
             {
-                LoadedBullets+=8;
+                LoadedBullets += 8;
 
                 for (int i = 0; i < Listeners.Length; i++)
                     Listeners[i].OnBulletLoad();
@@ -75,7 +77,7 @@ namespace CoverShooter
                     if (FullyLoaded != null) FullyLoaded.Invoke();
                 }
 
-                return true;
+                return false;
             }
             else
                 return false;
@@ -86,6 +88,7 @@ namespace CoverShooter
         /// </summary>
         public override bool LoadMagazine()
         {
+            if (CustomReload) return false;
             if (BulletInventory > 0 && LoadedBullets < MagazineSize)
             {
                 LoadedBullets = 0;

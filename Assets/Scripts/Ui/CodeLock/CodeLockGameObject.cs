@@ -17,6 +17,7 @@ public class CodeLockGameObject : MonoBehaviour
             NewObect = Instantiate(ins);
             NewObect.GetComponent<Terminal>().animator = animator;
             NewObect.GetComponent<Terminal>().Password = Password;
+            NewObect.GetComponent<Terminal>().CodeLockGameObject = gameObject;
         }
     }
 }

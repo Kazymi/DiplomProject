@@ -2183,12 +2183,13 @@ namespace CoverShooter
         /// </summary>
         public void InputEndMagazineLoad()
         {
+            
             if (!_isLoadingMagazine)
                 return;
 
             _isLoadingMagazine = false;
             var gun = EquippedWeapon.Gun;
-
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (gun == null)
                 return;
 
@@ -2213,7 +2214,7 @@ namespace CoverShooter
             if (Pumped != null) Pumped.Invoke();
 
             var gun = EquippedWeapon.Gun;
-
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (gun == null)
                 return;
 
@@ -3983,10 +3984,12 @@ namespace CoverShooter
 
         private void loadBullet()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             _isLoadingBullet = true;
             _animator.SetTrigger("LoadBullet");
 
-            var gun = EquippedWeapon.Gun;
+            
 
             if (gun != null)
                 gun.NotifyBulletLoadStart();

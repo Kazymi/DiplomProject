@@ -57,6 +57,7 @@ public class GunSet : MonoBehaviour
         PlayerLibrary.PlayerGameObject.GetComponent<CoverShooter.CharacterInventory>().Weapons[1].RightHolster = null;
         for (int i = 0; i != Rifle.Length; i++)
         {
+            if(Rifle[i] != null)
             Rifle[i].SetActive(false);
         }
     }

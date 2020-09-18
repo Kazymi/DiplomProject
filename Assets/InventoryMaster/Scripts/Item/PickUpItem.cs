@@ -13,6 +13,7 @@ public class PickUpItem : MonoBehaviour
     public Item item;
     private Inventory _inventory;
     private GameObject _player;
+    [SerializeField] private bool BoxCollider = false;
     [Header("Включать рб или нет")]
     [SerializeField] private Setting Settings = Setting.rigbody;
 
@@ -21,7 +22,7 @@ public class PickUpItem : MonoBehaviour
        
         if (Settings == Setting.rigbody) { gameObject.AddComponent<Rigidbody>(); StartCoroutine(DestroRigitBody()); transform.position = new Vector3(PlayerLibrary.PlayerGameObject.transform.position.x, PlayerLibrary.PlayerGameObject.transform.position.y + 2f, PlayerLibrary.PlayerGameObject.transform.position.z); }
         
-       gameObject.AddComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+      if(BoxCollider == false) gameObject.AddComponent<BoxCollider>().size = new Vector3(1, 1, 1);
     }
     public void E(GameObject hit)
     {

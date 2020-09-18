@@ -66,7 +66,7 @@ public class EventWallDoor : MonoBehaviour
 
     private void CheckAnimator(bool Value)
     {
-        if (Animatordoor.GetFloat("Blend") >= 0.6) Destroy(Animatordoor.gameObject.GetComponent<Collider>());
+        if (Animatordoor.GetFloat("Blend") >= 0.6) Destroy(Animatordoor.gameObject.GetComponent<BoxCollider>());
         if (Value)
         {
             if (Animatordoor.GetFloat("Blend") >= 1)
@@ -75,7 +75,7 @@ public class EventWallDoor : MonoBehaviour
             }
             else
             {
-                Animatordoor.SetFloat("Blend", Animatordoor.GetFloat("Blend") + 0.0002f);
+                Animatordoor.SetFloat("Blend", Animatordoor.GetFloat("Blend") + 0.0004f);
                 
             }
         }

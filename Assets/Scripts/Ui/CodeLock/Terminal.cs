@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour
 {
     [SerializeField] private Text TextIu;
+    public GameObject CodeLockGameObject;
     public Animator animator;
     private AudioSource source;
     [SerializeField] private GameObject SoundButton;
@@ -29,6 +30,7 @@ public class Terminal : MonoBehaviour
     {
         if(TextIu.text == Password)
         {
+            Destroy(CodeLockGameObject.GetComponent<Collider>());
             animator.SetTrigger("Open");
             PlayerLibrary.CraftSystem = false;
             Destroy(gameObject);
@@ -67,5 +69,6 @@ public class Terminal : MonoBehaviour
         GameObject ClipsSourse = Instantiate(SoundButton);
         ClipsSourse.GetComponent<AudioSource>().clip = clip;
         ClipsSourse.GetComponent<AudioSource>().Play();
+       
     }
 }

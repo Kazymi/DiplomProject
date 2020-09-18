@@ -40,12 +40,15 @@ namespace CoverShooter
         /// </summary>
         public void OnPump()
         {
+           
             if (Reload <= float.Epsilon)
                 return;
 
             checkActor();
             Alerts.Broadcast(transform.position, Reload, true, _actor, true);
         }
+
+
 
         /// <summary>
         /// Broadcast rechamber alert.
@@ -107,10 +110,10 @@ namespace CoverShooter
             Alerts.Broadcast(transform.position, Reload, true, _actor, true);
         }
 
-        public void OnFullyLoaded() { }
+        public void OnFullyLoaded() {  }
         public void OnBulletLoad() { }
         public void OnPumpStart() { }
-        public void OnBulletLoadStart() { }
+        public void OnBulletLoadStart() {}
 
         private void checkActor()
         {

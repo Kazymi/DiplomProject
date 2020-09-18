@@ -397,6 +397,8 @@ namespace CoverShooter
         /// </summary>
         public virtual void OnMagazineLoadStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (MagazineLoadStarted != null)
                 MagazineLoadStarted();
         }
@@ -406,6 +408,8 @@ namespace CoverShooter
         /// </summary>
         public virtual void OnBulletLoadStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (BulletLoadStarted != null)
                 BulletLoadStarted();
         }
@@ -415,6 +419,8 @@ namespace CoverShooter
         /// </summary>
         public virtual void OnPumpStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (PumpStarted != null)
                 PumpStarted();
         }
@@ -424,6 +430,8 @@ namespace CoverShooter
         /// </summary>
         public virtual void OnPumped()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             if (Pumped != null)
                 Pumped();
         }
@@ -614,6 +622,8 @@ namespace CoverShooter
 
         public void NotifyPumpStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             OnPumpStart();
 
             for (int i = 0; i < _listeners.Length; i++)
@@ -622,12 +632,16 @@ namespace CoverShooter
 
         public void NotifyPump()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             for (int i = 0; i < _listeners.Length; i++)
                 _listeners[i].OnPump();
         }
 
         public void NotifyMagazineLoadStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             OnMagazineLoadStart();
 
             for (int i = 0; i < _listeners.Length; i++)
@@ -636,6 +650,8 @@ namespace CoverShooter
 
         public void NotifyBulletLoadStart()
         {
+            var gun = PlayerLibrary.PlayerGameObject.GetComponent<CharacterMotor>().EquippedWeapon.Gun;
+            if (gun.GetComponent<Gun>().CustomReload) return;
             OnBulletLoadStart();
 
             for (int i = 0; i < _listeners.Length; i++)
@@ -969,6 +985,7 @@ namespace CoverShooter
         /// </summary>
         private bool fire(float delay, bool consume)
         {
+
             bool isFriend;
             var direction = calculateRaycastDirection();
             var hit = Raycast(RaycastOrigin, direction, out isFriend, true);
