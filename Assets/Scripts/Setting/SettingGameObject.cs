@@ -9,7 +9,9 @@ public class SettingGameObject : MonoBehaviour
         Stone = 0,
         Grass = 1,
         Glass = 2,
-        Gils =3
+        Gils =3,
+        Hair = 4,
+        effect = 5
     }
     public SettingObject GameObj = SettingObject.Stone;
 
@@ -25,6 +27,11 @@ public class SettingGameObject : MonoBehaviour
                     break;
                 case SettingObject.Gils: if (!LibraryStaticSetting.ActivGils) Destroy(gameObject);
                     break;
-            }
+                case SettingObject.effect:
+                    if (!LibraryStaticSetting.ActivEffect) Destroy(gameObject);
+                break;
+        }
     }
+
+
 }

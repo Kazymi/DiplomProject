@@ -51,9 +51,16 @@ public class EventDialog : MonoBehaviour
             foreach (char j in TextMessage[i])
             {
                 TextPanel.text += j;
-                yield return new WaitForSeconds(0.1f);              
+                yield return new WaitForSeconds(0.03f);              
             }
             yield return new WaitForSeconds(2f);
+            if (Sound[i] != null)
+            {
+                while (GetComponent<AudioSource>().isPlaying)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
             TextPanel.text = "";
         }
         Destroy(gameObject);

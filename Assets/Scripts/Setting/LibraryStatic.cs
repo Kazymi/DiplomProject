@@ -8,6 +8,8 @@ public static class LibraryStaticSetting
     public static bool ActivGrass = true;
     public static bool ActivGils = true;
     public static bool ActivStone = true;
+    public static bool ActivHair = true;
+    public static bool ActivEffect = true;
 }
 
 public class LibrarySetting
@@ -16,13 +18,17 @@ public class LibrarySetting
     public bool ActivGrass = LibraryStaticSetting.ActivGrass;
     public bool ActivGils = LibraryStaticSetting.ActivGils;
     public bool ActivStone = LibraryStaticSetting.ActivStone;
+    public bool ActivHair = LibraryStaticSetting.ActivHair;
+    public bool ActivEffect = LibraryStaticSetting.ActivEffect;
 
-   public void apply()
+    public void apply()
     {
         LibraryStaticSetting.ActivGlass = ActivGlass;
         LibraryStaticSetting.ActivGrass = ActivGrass;
         LibraryStaticSetting.ActivGils = ActivGils;
         LibraryStaticSetting.ActivStone = ActivStone;
+        LibraryStaticSetting.ActivEffect = ActivEffect;
+        LibraryStaticSetting.ActivHair = ActivHair;
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Setting");
         for(int i = 0; i!=gameObjects.Length; i++)
         {

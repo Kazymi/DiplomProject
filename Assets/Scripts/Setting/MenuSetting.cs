@@ -22,6 +22,26 @@ public class MenuSetting : MonoBehaviour
         Library.ActivGrass = true;
     }
 
+    public void DHaie()
+    {
+        Library.ActivHair = false;
+    }
+
+    public void OHaie()
+    {
+        Library.ActivHair = true;
+    }
+
+    public void DEffect()
+    {
+        Library.ActivEffect = false;
+    }
+
+    public void OEffect()
+    {
+        Library.ActivEffect = true;
+    }
+
     public void OGlass()
     {
         Library.ActivGlass = true;

@@ -140,6 +140,7 @@ public class DynamicBone : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!LibraryStaticSetting.ActivHair) Destroy(gameObject.GetComponent<DynamicBone>());
         if (m_UpdateMode == UpdateMode.AnimatePhysics)
             PreUpdate();
     }
